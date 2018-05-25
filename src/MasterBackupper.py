@@ -1,5 +1,11 @@
+from tkinter.filedialog import askdirectory
 import os
 import zipfile
+
+source = askdirectory()
+print (source)
+destination = askdirectory()
+print (destination)
 
 def zipdir(path, ziph):
     # ziph is zipfile handle
@@ -8,6 +14,6 @@ def zipdir(path, ziph):
             ziph.write(os.path.join(root, file))
 
 
-    zipf = zipfile.ZipFile('DESTINATIONPATH', 'w', zipfile.ZIP_DEFLATED)
-    zipdir('SOURCEPATH', zipf)
+    zipf = zipfile.ZipFile(destination+'/heutigesdatum.zip', 'w', zipfile.ZIP_DEFLATED)
+    zipdir(source, zipf)
     zipf.close()
